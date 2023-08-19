@@ -24,12 +24,12 @@ cursor = conn.cursor()
 # объявление команд
 async def start(update: Update, context: CallbackContext) -> int:
     logger.info("Пользователь %s начал диалог.", update.effective_user.first_name)
-    await update.message.reply_text("Привет! Я бот для поиска оборудования.\nВыберите страну изготовления:\nИндия, Германия")
+    await update.message.reply_text("Привет! Я бот для поиска оборудования.\nВыберите страну изготовления:\nИндия, Германия, Великобритания, Италия")
     return COUNTRY
 
 async def get_country(update: Update, context: CallbackContext) -> int:
     context.user_data['country'] = update.message.text
-    await update.message.reply_text("Введите ПО:\nArcoCAD\nCALYPSO")
+    await update.message.reply_text("Введите ПО:\nArcoCAD, CALYPSO, PC-DMIS,\nQUINDOS, GEO P, Quatris,\nCAMIO, Aberlink 3D")
     return PO
 
 async def get_po(update: Update, context: CallbackContext) -> int:
@@ -39,7 +39,7 @@ async def get_po(update: Update, context: CallbackContext) -> int:
 
 async def get_mode(update: Update, context: CallbackContext) -> int:
     context.user_data['mode'] = update.message.text
-    await update.message.reply_text("Введите тип измерительной головки:\nAccuLaser, PH6M, PH10 (M/MQ), PH10(M/MQ/T), PH20, REVO-2, SP80, VAST XT Gold, VAST XTR Gold, VAST XXT, RDS, TP (20/200), ZEISS Discovery.V12")
+    await update.message.reply_text("Введите тип измерительной головки:\nAccuLaser, PH6M, PH10 (M/MQ),\nPH10(M/MQ/T), PH20, REVO-2,\nSP80, VAST XT Gold, VAST XTR Gold,\nVAST XXT, RDS, TP (20/200),\nZEISS Discovery.V12, HH-A, Ph10")
     return IZMGOL
 
 async def get_izmgol(update: Update, context: CallbackContext) -> int:
